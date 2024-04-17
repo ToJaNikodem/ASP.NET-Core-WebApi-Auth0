@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
 var domain = $"https://{builder.Configuration["Auth0:Domain"]}/";
@@ -18,27 +20,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     };
 });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("read:messages", policy => policy.Requirements.Add(new
-    HasScopeRequirement("read:messages", domain)));
-});
+builder.Services.AddAuthorization();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "MyAllowSpecificOrigins",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:5173")
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-        });
-});
+// builder.Services.AddAuthorizationBuilder()
+//     .AddPolicy("read:messages", policy => policy.Requirements.Add(new
+//     HasScopeRequirement("read:messages", domain)))
+//     .AddPolicy("read:all", policy => policy.Requirements.Add(new
+//     HasScopeRequirement("read:all", domain)));
 
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -47,24 +42,27 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseHttpsRedirection();
+
+app.UseCors(builder => {
+    builder.AllowAnyOrigin();
+    builder.AllowAnyMethod();
+    builder.AllowAnyHeader();
+});
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseCors("MyAllowSpecificOrigins");
 
 app.MapGet("api/all", () =>
 {
     return new[] { "One", "Two", "Three" };
 })
-    .RequireAuthorization("read:all");
+    .RequireAuthorization();
 
 app.MapGet("api/messages", () =>
 {
     return new[] { "One2", "Two2", "Three2" };
 })
-    .RequireAuthorization("read:messages");
-
-app.UseHttpsRedirection();
+    .RequireAuthorization();
 
 app.Run();

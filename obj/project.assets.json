@@ -1334,19 +1334,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NikodemBuczkowski\\.nuget\\packages\\": {}
+    "/home/nikodem/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\NikodemBuczkowski\\Documents\\git\\ASP.NET-Core-WebApi-Auth0\\Auth0.csproj",
+      "projectUniqueName": "/home/nikodem/Programing/NETcore/Auth0/Auth0.csproj",
       "projectName": "Auth0",
-      "projectPath": "c:\\Users\\NikodemBuczkowski\\Documents\\git\\ASP.NET-Core-WebApi-Auth0\\Auth0.csproj",
-      "packagesPath": "C:\\Users\\NikodemBuczkowski\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\NikodemBuczkowski\\Documents\\git\\ASP.NET-Core-WebApi-Auth0\\obj\\",
+      "projectPath": "/home/nikodem/Programing/NETcore/Auth0/Auth0.csproj",
+      "packagesPath": "/home/nikodem/.nuget/packages/",
+      "outputPath": "/home/nikodem/Programing/NETcore/Auth0/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\NikodemBuczkowski\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/nikodem/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1411,7 +1411,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/nikodem/.dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
