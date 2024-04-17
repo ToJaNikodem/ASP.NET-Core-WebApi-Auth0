@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/nikodem/Programing/NETcore/Auth0/Auth0.csproj": {}
+    "C:\\Users\\NikodemBuczkowski\\Documents\\git\\ASP.NET-Core-WebApi-Auth0\\Auth0.csproj": {}
   },
   "projects": {
-    "/home/nikodem/Programing/NETcore/Auth0/Auth0.csproj": {
+    "C:\\Users\\NikodemBuczkowski\\Documents\\git\\ASP.NET-Core-WebApi-Auth0\\Auth0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/nikodem/Programing/NETcore/Auth0/Auth0.csproj",
+        "projectUniqueName": "C:\\Users\\NikodemBuczkowski\\Documents\\git\\ASP.NET-Core-WebApi-Auth0\\Auth0.csproj",
         "projectName": "Auth0",
-        "projectPath": "/home/nikodem/Programing/NETcore/Auth0/Auth0.csproj",
-        "packagesPath": "/home/nikodem/.nuget/packages/",
-        "outputPath": "/home/nikodem/Programing/NETcore/Auth0/obj/",
+        "projectPath": "C:\\Users\\NikodemBuczkowski\\Documents\\git\\ASP.NET-Core-WebApi-Auth0\\Auth0.csproj",
+        "packagesPath": "C:\\Users\\NikodemBuczkowski\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NikodemBuczkowski\\Documents\\git\\ASP.NET-Core-WebApi-Auth0\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/nikodem/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\NikodemBuczkowski\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -47,6 +47,10 @@
               "target": "Package",
               "version": "[8.0.4, )"
             },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.3, )"
@@ -75,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/nikodem/.dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
