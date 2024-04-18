@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
 var builder = WebApplication.CreateBuilder(args);
 
 var domain = $"https://{builder.Configuration["Auth0:Domain"]}/";
@@ -22,18 +20,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// builder.Services.AddAuthorizationBuilder()
-//     .AddPolicy("read:messages", policy => policy.Requirements.Add(new
-//     HasScopeRequirement("read:messages", domain)))
-//     .AddPolicy("read:all", policy => policy.Requirements.Add(new
-//     HasScopeRequirement("read:all", domain)));
-
 builder.Services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors();
+
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("read:messages", policy => policy.Requirements.Add(new
+    HasScopeRequirement("read:messages", domain)))
+    .AddPolicy("read:all", policy => policy.Requirements.Add(new
+    HasScopeRequirement("read:all", domain)));
 
 var app = builder.Build();
 
@@ -57,7 +55,7 @@ app.MapGet("api/all", () =>
 {
     return new[] { "One", "Two", "Three" };
 })
-    .RequireAuthorization();
+    .RequireAuthorization("read:all");
 
 app.MapGet("api/messages", () =>
 {
